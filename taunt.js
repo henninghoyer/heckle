@@ -4,7 +4,7 @@ var yaml = require("js-yaml");
 var marked = require("marked");
 var Mold = require("mold-template");
 var util = require("./util");
-CodeMirror = require("codemirror/addon/runmode/runmode.node.js");
+var CodeMirror = require("codemirror/addon/runmode/runmode.node.js");
 
 marked.setOptions({highlight: highlightCode, gfm: true});
 
@@ -40,6 +40,21 @@ function readFrontMatter(file) {
   return {front: {}, main: file};
 }
 
+function getExcerpt(config, file) {
+  // find the first occurence of \n\n or excerpt_separator and split there
+  var excerptMaxWords = config.excerpt_length || 56;
+  var excerpt = "";
+
+  var excRaw = file.split(config.excerpt_separator || "\n")[0];
+  var split = excRaw.split(" "); //cut out words
+
+  for(var i = 0; i <= excerptMaxWords && i < split.length; i++) {
+    excerpt += split[i] + " ";
+  }
+
+  return excerpt;
+}
+
 function readPosts(config) {
   var posts = [];
   fs.readdirSync("_posts/").forEach(function(file) {
@@ -54,6 +69,7 @@ function readPosts(config) {
     if (d[5] == "md") {
       post.content = marked(split.main);
       post.url = getURL(config, post);
+      post.excerpt = marked(getExcerpt(config, split.main) + "<a class='read_on' href='" + post.url + "'>more</a>");
     } else if (d[5] == "link") {
       var escd = Mold.escapeHTML(post.url);
       post.content = "<p>Read this post at <a href=\"" + escd + "\">" + escd + "</a>.</p>";
