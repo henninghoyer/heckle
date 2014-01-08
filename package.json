@@ -1,19 +1,30 @@
 {
-  "name": "heckle-blog",
+  "name": "taunt",
   "version":"0.1.0",
-  "main": "heckle.js",
-  "description": "Static blog generator",
-  "licenses": [{"type": "MIT",
-                "url": "https://raw.github.com/marijnh/heckle/master/LICENSE"}],
-  "dependencies": {"dateformat": "1.x.x",
-                   "marked": "0.2.x",
-                   "rimraf": "2.x.x",
-                   "js-yaml": "1.x.x",
-                   "codemirror": "git+https://github.com/marijnh/CodeMirror.git",
-                   "mold-template": "1.x.x"},
-  "bugs": "http://github.com/marijnh/heckle/issues",
-  "keywords": ["Jekyll", "Blog"],
-  "homepage": "https://github.com/marijnh/heckle",
-  "author": "Marijn Haverbeke <marijnh@gmail.com>",
-  "repositories": [{"type": "git", "url": "https://github.com/marijnh/heckle.git"}]
+  "main": "taunt.js",
+  "description": "Static blog generator, based on Jekyll but minimal set of functionality.",
+  "licenses": [
+    {
+      "type": "MIT", 
+      "url": "https://raw.github.com/henninghoyer/taunt/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "dateformat": "1.x.x", 
+    "marked": "0.3.x", 
+    "rimraf": "2.x.x", 
+    "js-yaml": "1.x.x", 
+    "codemirror": "3.x.x", 
+    "mold-template": "1.x.x"
+  },
+  "bugs": "https://github.com/henninghoyer/taunt/issues",
+  "keywords": ["Jekyll", "Heckle", "Blog", "Blog generator"],
+  "homepage": "https://github.com/henninghoyer/taunt",
+  "author": "Henning Hoyer <henning@henninghoyer.com>",
+  "repositories": [
+    {
+      "type": "git", 
+      "url": "https://github.com/henninghoyer/taunt.git"
+    }
+  ]
 }
